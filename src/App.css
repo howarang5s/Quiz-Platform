@@ -1,38 +1,325 @@
-.App {
-  text-align: center;
+/* Global styles */
+body {
+  font-family: 'Arial', sans-serif; /* Use a clean font */
+  margin: 0; /* Reset margin */
+  padding: 0; /* Reset padding */
+  background-color: #2c2c2c; /* Dark background for the entire app */
+  color: #f4f4f4; /* Light text color for readability */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* src/App.css or src/Components/Home.css */
+.home-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin: 20px;
+}
+
+.card {
+  background-color: #333; /* Dark background color */
+  border: 2px solid yellow; /* Yellow border around the card */
+  border-radius: 10px; /* Slightly more rounded corners */
+  padding: 25px; /* More padding for spacious content */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Slightly stronger shadow for more depth */
+  max-width: 100%; /* Ensures it fits well on small screens */
+  width: 400px; /* Increased width for larger displays */
+  color: #f9f9f9; /* Softer white text color */
+  margin: 20px; /* Ensure some margin around the card */
+  box-sizing: border-box; /* Ensures padding doesn’t affect overall width */
+  transition: transform 0.2s ease-in-out; /* Smooth scaling animation */
+}
+
+.card:hover {
+  transform: scale(1.02); /* Slight zoom effect on hover */
+}
+
+
+label {
+  display: block; /* Each label takes up full width */
+  margin-bottom: 10px; /* Space between labels */
+  color: white; /* White text for labels */
+}
+
+input,
+select {
+  width: 100%; /* Full width for inputs and selects */
+  padding: 8px; /* Padding for inputs */
+  margin-top: 5px; /* Space between label and input */
+  border: 1px solid #ccc; /* Border for inputs */
+  border-radius: 4px; /* Rounded corners for inputs */
+  background-color: #555; /* Dark background for inputs */
+  color: white; /* White text color for inputs */
+  box-sizing: border-box; /* Include padding and border in width */
+}
+
+input::placeholder,
+select option {
+  color: #ccc; /* Light grey placeholder text */
+}
+
+button {
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+  padding: 10px; /* Padding for button */
+  border: none; /* No border */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  width: 100%; /* Full width for the button */
+}
+
+button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+.error-message {
+  color: red; /* Red color for error messages */
+  margin-top: 10px; /* Space above the error message */
+}
+
+
+.leaderboard {
+  max-width: 800px; /* Max width for larger screens */
+  margin: auto; /* Centering the content */
+  padding: 20px; /* Inner spacing */
+  background-color: #444; /* Darker background color */
+  border: 2px solid yellow; /* Yellow border */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+}
+
+.leaderboard h1 {
+  text-align: center;
+  font-size: 24px; /* Default font size */
+  color: #ffeb3b; /* Bright yellow for the title */
+}
+
+.leaderboard-item {
+  display: flex; /* Use flexbox for alignment */
+  justify-content: space-between; /* Space between name and button */
+  align-items: center; /* Align items vertically centered */
+  padding: 10px; /* Padding for each item */
+  border-bottom: 1px solid #666; /* Light bottom border for separation */
+  color: #f4f4f4; /* Light text color */
+}
+
+.user-name {
+  flex-grow: 1; /* Allow the name to take available space */
+  font-size: 16px; /* Font size for user names */
+}
+
+.remove-button {
+  margin-left: 10px; /* Add space between name and button */
+  padding: 5px 10px; /* Padding for the button */
+  background-color: #ff4d4d; /* Red background for the remove button */
+  color: white; /* White text color */
+  border: none; /* Remove border */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Transition for hover effect */
+}
+
+.remove-button:hover {
+  background-color: #ff1a1a; /* Darker red on hover */
+}
+
+/* Progress Tracking */
+.progress {
+  max-width: 600px; /* Set a maximum width for the progress container */
+  margin: 20px auto; /* Center the progress container */
+  padding: 20px; /* Add padding */
+  background-color: #444; /* Darker background for progress */
+  border: 2px solid yellow; /* Yellow border */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
+
+.progress-summary {
+  margin-bottom: 20px; /* Space below the summary */
+}
+
+.progress-bar {
+  background-color: #555; /* Darker gray background for the bar */
+  border-radius: 5px; /* Rounded corners for the bar */
+  height: 20px; /* Height of the progress bar */
+  overflow: hidden; /* Hide overflow */
+  position: relative; /* Positioning context for the fill */
+}
+
+.progress-bar-fill {
+  background-color: #4caf50; /* Green color for the fill */
+  height: 100%; /* Fill height */
+  transition: width 0.5s ease; /* Smooth transition for the fill */
+}
+
+.progress h2 {
+  text-align: center; /* Center align the heading */
+  color: #ffeb3b; /* Bright yellow for headings */
+}
+
+.progress ul {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0; /* Remove padding */
+}
+
+.progress li {
+  padding: 10px; /* Add padding around list items */
+  border-bottom: 1px solid #666; /* Light bottom border */
+  color: #f4f4f4; /* Light gray text for entries */
+}
+
+.progress li:last-child {
+  border-bottom: none; /* Remove bottom border from last item */
+}
+
+/* Quiz Component */
+.quiz {
+  width: 800px; /* Default width for larger screens */
+  height: auto; /* Set height to auto to adapt to content */
+  margin: auto; /* Center horizontally */
+  padding: 20px; /* Add inner padding */
+  background-color: #444; /* Darker background */
+  border: 2px solid yellow; /* Yellow border */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+/* Progress Bar */
+.progress-bar {
+  height: 20px; /* Fixed height for the progress bar */
+  background-color: #e0e0e0; /* Light grey background */
+  border-radius: 10px; /* Rounded corners for the progress bar */
+  margin: 10px 0; /* Margin for separation */
+}
+
+.progress-fill {
+  height: 100%; /* Full height of the bar */
+  background-color: #4caf50; /* Green color for the fill */
+  border-radius: 10px; /* Rounded corners for the fill */
+  transition: width 0.5s ease; /* Smooth transition */
+}
+
+/* Input Styles */
+input[type="text"] {
+  width: calc(100% - 20px); /* Full width minus padding */
+  padding: 10px; /* Inner spacing */
+  margin: 20px 0; /* Consistent margin with progress bar */
+  border: 1px solid #ccc; /* Light grey border */
+  border-radius: 4px; /* Rounded corners */
+  background-color: #666; /* Dark background for input */
+  color: #f4f4f4; /* Light text color */
+}
+
+input[type="radio"] {
+  width: auto; /* Keep radio buttons at their default size */
+  margin: 0 10px 0 0; /* Add margin for spacing */
+  accent-color: #ffeb3b; /* Change radio button color */
+}
+
+/* Label Styles */
+label {
+  display: block; /* Ensure each label occupies its own line */
+  margin: 10px 0; /* Space between labels */
+  color: #f4f4f4; /* Light text color */
+}
+
+/* Button Styles */
+button {
+  display: block; /* Make button full width */
+  width: 100px; /* Full width */
+  padding: 10px; /* Inner spacing */
+  background-color: #007bff; /* Primary color */
+  color: white; /* Text color */
+  border: none; /* Remove border */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor */
+  transition: background-color 0.3s; /* Transition for hover effect */
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.next-button, .skip-button {
+  padding: 10px 20px;
+  background-color: #007bff;
   color: white;
+  border: none;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.next-button:hover, .skip-button:hover {
+  background-color: #0056b3;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+
+/* Mobile and Tablet Responsiveness */
+/* Tablet */
+@media (max-width: 768px) {
+  .card, .leaderboard, .progress, .quiz {
+    width: 90%; /* Make components adapt to smaller screens */
+    margin: 15px auto; /* Adjust margin for smaller screens */
   }
-  to {
-    transform: rotate(360deg);
+
+  h1 {
+    font-size: 22px; /* Adjust heading size for tablets */
+  }
+
+  button {
+    font-size: 14px; /* Adjust button font size for readability */
+    padding: 8px; /* Reduce button padding */
+  }
+
+  input[type="text"] {
+    margin: 15px 0; /* Reduce margin for text input */
+    padding: 8px; /* Adjust padding */
+  }
+
+  label {
+    font-size: 14px; /* Adjust label font size */
+  }
+
+  .button-container {
+    flex-direction: column; /* Stack buttons vertically on smaller screens */
+  }
+
+  .next-button, .skip-button {
+    width: 100%; /* Full-width buttons for tablet */
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .card, .leaderboard, .progress, .quiz {
+    width: 100%; /* Full width for mobile screens */
+    margin: 10px 0; /* Reduce margin */
+  }
+
+  h1 {
+    font-size: 18px; /* Further adjust heading size for smaller screens */
+  }
+
+  input[type="text"],
+  button {
+    padding: 6px; /* Reduce padding for mobile */
+    font-size: 12px; /* Smaller font size */
+  }
+
+  label {
+    font-size: 12px; /* Smaller label text for mobile */
+  }
+
+  .button-container {
+    flex-direction: column; /* Stack buttons vertically */
+  }
+
+  .next-button, .skip-button {
+    width: 100%; /* Full width for buttons on mobile */
   }
 }
